@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FIISesorias Asesores</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/icon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/icon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
+    <link rel="manifest" href="/icon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/icon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+    <header>
+        <h1>FIISesorías Asesores</h1>
+    </header>
+    <div id="index">
+        <div align="right">
+            <template v-if="sesion=='iniciada'">
+                <header>
+                    <table class="navbar">
+                        <tr>
+                            <td><input class="boton" type="button" v-on:click="cerrarSesion" value="Cerrar Sesion" />
+                            </td>
+                        </tr>
+                    </table>
+                </header>
+            </template>
+        </div>
+        <div align="center">
+            <template v-if="sesion=='no iniciada'">
+                <table class="navbar">
+                    <tr>
+                        <td>
+                            <a href="ingresarp.html"><input class="boton" type="button" value="Iniciar Sesion" /></a>
+                        </td>
+                        <td>
+                            <a href="reg_prof.html"><input class="boton" type="button" value="Registrarse" /></a>
+                        </td>
+                        <td>
+                            <a href="index.html"><input class="boton" type="button"value="FIISesorias Alumnos" /></a>
+                        </td>
+                    </tr>
+                </table>
+            </template>
+            <nav>
+                <table class="navbar">
+                    <tr>
+                        <td><input class="boton" type="button" v-on:click="verTeam" value="Nuestro Team" /></td>
+                        <td><input class="boton" type="button" v-on:click="verContacto" value="Contactanos" /></td>
+                    </tr>
+                </table>
+            </nav>
+            <template v-if="sesion=='iniciada'">
+                <table class="navbar">
+                    <tr>
+                        <td><input type="button" class="boton" v-on:click="datosUsuario" value="Mi usuario" /></td>
+                        <td><input type="button" class="boton" v-on:click="verHorarios" value="Ver Horarios" /></td>
+                        <td><input type="button" class="boton" v-on:click="verAlumnos" value="Ver Mis Alumnos"></td>
+                        <td><input type="button" class="boton" v-on:click="verRecomendaciones" value="Ver mis recomendaciones"></td>
+                    </tr>
+                </table>
+            </template>
+        </div>
+        <template v-if="team==true">
+            <template v-for="a in asesores">
+                <h2>{{a.nombre}} {{a.apellido}}</h2>
+                <h3>Correo : {{a.correo}}</h3>
+                <h3>Numero telefonico: {{a.telefono}}</h3>
+
+            </template>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/yk-gOFrRw3Q" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </template>
+        <div align="center">
+            <template v-if="contacto==true">
+                <h2>Contactese con los creadores!!</h2>
+                <h3>WhatsApp: ### ### ###</h3>
+                <h3>Correo: fiisesorias@gmail.com</h3>
+                <h3>Facebook : FIISesorias OFICIAL</h3>
+            </template>
+            <template v-if="usuario==true">
+                <h2>MI USUARIO</h2>
+                <table border="1px">
+                    <tr>
+                        <th>Nombre:</th>
+                        <td>{{datos_usuario.nombre}}</td>
+                    </tr>
+                    <tr>
+                        <th>Apellido:</th>
+                        <td>{{datos_usuario.apellido}}</td>
+                    </tr>
+                    <tr>
+                        <th>Correo Electrónico:</th>
+                        <td>{{datos_usuario.correo}}</td>
+                    </tr>
+                    <tr>
+                        <th>Telefono:</th>
+                        <td>{{datos_usuario.telefono}}</td>
+                    </tr>
+                </table>
+            </template>
+            <template v-if="verhorarios==true">
+                <h2>MIS HORARIOS</h2>
+                <table border="1px">
+                    <tr>
+                        <th>CURSO</th>
+                        <th>FECHA</th>
+                        <th>HORA DE INICIO</th>
+                        <th>HORA DE FIN</th>
+                        <th>COSTO</th>
+                        <th>LINK DE LA SALA</th>
+                    </tr>
+                    <template v-for="h in horarios">
+                        <tr>
+                            <td>{{h.nombre}}</td>
+                            <td>{{h.fecha}}</td>
+                            <td>{{h.hora_inicio.substr(11,5)}}</td>
+                            <td>{{h.hora_fin.substr(11,5)}}</td>
+                            <td>{{h.costo}}</td>
+                            <td>{{h.sala}}</td>
+                        </tr>
+                    </template>
+
+                </table>
+
+            </template>
+            <template v-if="mis_alumnos == true">
+                <h2>MIS ALUMNOS</h2>
+                <table BORDER="1px">
+                    <tr>
+                        <th>NOMBRE</th>
+                        <th>APELLIDO</th>
+                        <th>TELEFONO</th>
+                        <th>ID ASESORIA</th>
+                        <th>CURSO</th>
+                    </tr>
+                    <template v-for="u in listaalumnos">
+                        <tr>
+                            <td>{{u.nombre}}</td>
+                            <td>{{u.apellido}}</td>
+                            <td>{{u.telefono}}</td>
+                            <td>{{u.id_asesoria}}</td>
+                            <td>{{u.curso}}</td>
+
+                        </tr>
+                    </template>
+                </table>
+            </template>
+            <template v-if="mis_recom == true">
+                <h2>Mis Recomendaciones</h2>
+                <table BORDER="1px">
+                    <template v-for="r in recomendaciones">
+                        <tr>
+                            <td>{{r.recomendacion}}</td>
+                        </tr>
+                    </template>
+                </table>
+            </template>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/script_index_asesor.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
+</html>

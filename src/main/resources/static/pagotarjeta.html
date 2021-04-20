@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FIISesorias - Pago con Tarjeta</title>
+    <link rel="stylesheet" href="css/pago.css">
+    <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/icon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/icon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
+    <link rel="manifest" href="/icon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/icon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+<div id="tarjet" align="center">
+<form action="/pagartarjeta" method="post">
+<table>
+    <header>
+    <h1>FIISesorías</h1>
+        <h2>Pago con Tarjeta</h2>
+    </header>
+    <div text-align="left">
+        <tr>
+            <td>
+                <input type="radio" id="master" value=1 v-model="TarjetaRequest.id_tipo_tar">
+                <label for="master">Master Card</label><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="radio" id="visa" value=2 v-model="TarjetaRequest.id_tipo_tar">
+                <label for="visa">VISA</label><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="radio" id="american" value=3 v-model="TarjetaRequest.id_tipo_tar">
+                <label for="american">American Express</label><br>
+            </td>
+        </tr>
+
+
+    </div>
+
+    <tr><td><input type="text" v-model="TarjetaRequest.propietario" placeholder="Nombre del Titular"></td></tr>
+    <tr><td><input type="number" v-model="TarjetaRequest.nro_tar" placeholder="Numero de Tarjeta"></td></tr>
+    <tr><td><input type="number" v-model="TarjetaRequest.caducidad" placeholder="Año de Caducidad"></td></tr>
+    <tr><td><input type="text" v-model="TarjetaRequest.cvc" placeholder="CVC"></td></tr>
+</table>
+    <input type="button" v-on:click="post1" value="Confirmar Datos">
+    <template v-if="confirm==true">
+        <table>
+        <tr><td><input type="number" v-model="PagoTarRequest.monto" placeholder="Monto:"></td></tr>
+            <tr><td><ol> <input type="button" v-on:click="post2" value="Completar Pago"> </ol></td></tr>
+        </table>
+        <template v-if="pago==true">
+            <ol><a href="http://localhost:8080/confirmacionpagos.html"><input type="button" v-on:click="post3" value="continuar"></a> </ol>
+        </template>
+    </template>
+    <ol><a href="http://localhost:8080/inscripcion.html"> <input type="button" name="pagocancelado" value="Cancelar Pago"></a></ol>
+</form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/script_tarjeta.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
+</html>

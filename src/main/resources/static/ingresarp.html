@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Iniciar Sesion</title>
+    <link rel="stylesheet" href="css/ingresar.css">
+    <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/icon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
+    <link rel="manifest" href="/icon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/icon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+    <div id="loginp">
+
+        <template v-if="sesion=='no iniciada'">
+            <section class="login">
+                <h1>FIISesorías Asesores</h1>
+                <table>
+                    <tr>
+                        <td>Correo Electronico:</td>
+                        <td><input v-model="asuserRequest.correo" type="text" placeholder="Direccion de correo" /></td>
+                    </tr>
+                    <tr>
+                        <td>Contraseña:</td>
+                        <td><input v-model="asuserRequest.telefono" type="password" placeholder="Telefono registrado" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><button v-on:click="ingresar">Ingresar</button></td>
+                    </tr>
+                </table>
+            </section>
+        </template>
+        <template v-if="sesion=='no iniciada' && contador>0">
+            <h3 style="color:#ff0000">Ingrese de nuevo, contraseña incorrecta</h3>
+        </template>
+        <template v-if="sesion=='iniciada'">
+            <div class="login">
+                <table>
+                    <tr>
+                        <td>
+                            <h1>Se ha logeado correctamente</h1>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="index_asesor.html"><button v-on:click="guardarId">Empieza a navegar</button></a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </template>
+    </div>
+
+
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/script_ingresarp.js"></script>
+
+</body>
+
+</html>

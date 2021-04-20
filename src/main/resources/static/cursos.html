@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cursos</title><link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/icon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/icon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
+    <link rel="manifest" href="/icon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/icon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="css/cursos.css">
+</head>
+<body>
+<div id="cursos">
+    <!-- <datalist>
+        <template v-for="u in universidades">
+            <option>
+                {{u.nombre}}
+            </option>
+        </template>
+    </datalist> -->
+    <datalist id="universidad">
+        <option value="Universidad Nacional de Ingenieria">
+        <option value="Universidad Nacional Federico Villareal">
+    </datalist>
+    <datalist id="areas_academicas">
+        <template v-for="a in areasAca">
+            <option>
+                {{a.nombre}}
+            </option>
+        </template>
+    </datalist>
+    <datalist id="cursol">
+        <template v-for="c in cursos">
+            <option>{{c.nombre}}</option>
+        </template>
+    </datalist>
+    <h1>FIISesorias</h1>
+    <h2>Cursos</h2>
+    <h3>Encuentra el curso que buscas ! </h3>
+    <a href="index.html"><input  class="boton" type="button" value="Regresar al inicio"/></a>
+    <table class="selec">
+        <tr>
+            <td>Selecciona universidad</td>
+            <td><input type="text" v-model="horarioRequest.universidad" list="universidad"></td>
+            <td><input type="button" class="boton" v-on:click="elegirUniv" value="Elegir"></td>
+        </tr>
+            <template v-if="areaf==true">
+                <tr>
+                    <td>Selecciona area académica</td>
+                    <td><input type="text" v-model="horarioRequest.areaAca" list="areas_academicas"></td>
+                    <td><input type="button"  class="boton" v-on:click="elegirAreaAcademica" value="Elegir"></td>
+                </tr>
+            </template>
+
+        <template v-if="cursof==true">
+            <tr>
+                <td>Seleccione curso</td>
+                <td><input type="text" v-model="horarioRequest.curso" list="cursol"></td>
+                <td><input type="button" class="boton" v-on:click="buscarHorarios" value="Elegir"></td>
+            </tr>
+        </template>
+    </table>
+    <template v-if="verHorarios==true">
+        <h3>Horarios Disponibles : </h3>
+        <table border="1px">
+            <tr>
+                <th>CURSO</th>
+                <th>CODIGO DEL HORARIO</th>
+                <th>FECHA</th>
+                <th>HORA DE INICIO</th>
+                <th>HORA DE FIN</th>
+                <th>COSTO</th>
+                <th>ASESOR</th>
+            </tr>
+            <template v-for="h in horarios">
+
+                <tr>
+                    <td>{{h.nombre_curso}}</td>
+                    <td>{{h.id}}</td>
+                    <td>{{h.fecha}}</td>
+                    <td>{{h.hora_inicio.substr(11,5)}}</td>
+                    <td>{{h.hora_fin.substr(11,5)}}</td>
+                    <td>{{h.costo}}</td>
+                    <td>{{h.nombre_asesor}}</td>
+
+                </tr>
+            </template>
+        </table>
+        <h3>¿Deseas alguna asesoría?</h3>
+        <table class="selec">
+            <tr>
+                <td>Ingresa el codigo del horario en el que estás interesado</td>
+                <td><input type="text" v-model="horario_id" placeholder="Codigo del Horario"></td>
+                <td><input type="button" class="boton"  v-on:click="guardarCurso" value="Inscribirse"></td>
+            </tr>
+        </table>
+    </template>
+    <template v-if="inscripcion==true">
+        <h3>Elige tu forma de pago..</h3>
+        <table class="selec">
+            <td><a href="pagoefectivo.html"><input class="boton" type="button" v-on:click="guardarmonto" value="Pago en Efectivo"/></a></td>
+            <td><a href="pagotarjeta.html"><input class="boton" type="button" value="Pago con Tarjeta"/></a></td>
+            <td><a href="pagopaypal.html"><input class="boton" type="button" value="Pago con Paypal"/></a></td>
+        </table>
+    </template>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/script_cursos.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+</body>
+</html>
