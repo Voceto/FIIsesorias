@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pago</title>
+</head>
+<body>
+    <h1>Felicitaciones</h1>
+
+    <div id="pagos">
+        <template v-if="pago=='true'">
+        <p>
+            Usted ha realizado su pago correctamente.
+        </p>
+        <h3>Para continuar navegando </h3>
+        <a href="http://localhost:8080/index.html"><input type="button" v-on:click="registrarAsesoria"  value="Pulsa aqui"></a>
+        </template>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/script_pago.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+</body>
+</html>

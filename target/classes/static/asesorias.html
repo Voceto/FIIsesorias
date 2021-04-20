@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Asesorías</title>
+</head>
+<body>
+    <header>
+        <h1>FIISesorías</h1>
+        <ul>
+            <li><a href="http://youtube.com">Cerrar Sesión</a></li>
+        </ul>
+    </header>
+    <datalist id="facultad">
+        <option value="Facultad de Ingenieria Industrial y Sistemas">
+        <option value="Facultad de Inginieria Civil">
+    </datalist>
+    <datalist id="area_academica">
+        <option value="Ciencias Basicas">
+        <option value="Sistemas y Telematica">
+        <option value="Humanidades">
+    </datalist>
+    <nav>
+        <ul>
+            <li><a href="mi_usuario.html">Mi usuario</a></li>
+            <li>Mis cursos</li>
+            <li><a href="https://www.youtube.com/watch?v=uKxyLmbOc0Q">Asesores</a></li>
+            <li><a href="https://www.youtube.com/watch?v=E0oIrX2T-yM">Cursos</a></li>
+            <li><a href="https://www.youtube.com/watch?v=FPOHeSPkToA">Inscripción</a></li>
+            <li><a href="https://www.youtube.com/watch?v=okYvAm4wmbA">Más</a></li>
+        </ul>
+    </nav>
+    <table>
+        <tr><td><input type="text" name="facultad" list="facultad" placeholder="Seleccione la Facultad"></td></tr>
+        <tr><td><input type="text" name="area_academica" list="area_academica" placeholder="Area Academica"></td></tr>
+        <tr><td><input type="date" name="fecha_asesoria"  min="2018-01-01" max="2020-12-31"></td></tr>
+        <tr><td><input type="button" name="filtrar" value="Filtrar"></td></tr>
+    </table>
+    <div>
+        <p>Asesorias Filtradas</p>
+        <table>
+            <tr><td><input type="checkbox" value="confirmar"></td>
+            <td>Matemática Discreta</td>
+            <td>00:00 - 00:00 00/00/0000</td></tr>
+            <tr><td><input type="checkbox" value="confirmar"></td>
+                <td>Programacion Orientada a Objetos</td>
+                <td>00:00 - 00:00 00/00/0000</td></tr>
+        </table>
+    </div>
+    <div>
+        <p>Agregar Carrito</p>
+        <p>Ver Carrito</p>
+    </div>
+
+</body>
+</html>

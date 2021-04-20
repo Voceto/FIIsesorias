@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="loginp">
+    <template v-if="sesion=='no iniciada'">
+        <section class="login">
+            <h1>FIISesorías</h1>
+            <table>
+                <tr>
+                    <td>Usuario:</td>
+                    <td><input v-model="asuserRequest.correo" type = "text" placeholder="Direccion de correo"/></td>
+                </tr>
+                <tr>
+                    <td>Contraseña:</td>
+                    <td><input v-model="asuserRequest.telefono" type = "password" placeholder="Telefono registrado"/></td>
+                </tr>
+                <tr>
+                    <td><button v-on:click="ingresar">Ingresar</button></td>
+                </tr>
+            </table>
+        </section>
+    </template>
+    <template v-if="sesion=='no iniciada' && contador>0">
+        <h3 style="color:#ff0000">Ingrese de nuevo, contraseña incorrecta</h3>
+    </template>
+    <template v-if="sesion=='iniciada'">
+        <a href="http://localhost:8080/index_asesor.html"><button v-on:click="guardarId">Empieza a navegar</button></a>
+    </template>
+</div>
+
+
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/script_ingresarp.js"></script>
+
+</body>
+</html>

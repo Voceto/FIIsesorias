@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+    <link rel="stylesheet" href="css/registro.css">
+</head>
+<body>
+
+    <h1>Registrate y usa tus conocimientos para ganar recursos</h1>
+    <div id="registro">
+        <table>
+            <tr><td><input type="text" v-model="profe.nombre" placeholder="Nombre" class="field"></td></tr>
+            <tr><td><input type="text" v-model="profe.apellido" placeholder="Apellidos" class="field"></td></tr>
+            <tr><td><input type="text" v-model="profe.correo" placeholder="Correo eletronico" class="field"></td></tr>
+            <tr><td><input type="text" v-model="profe.telefono" placeholder="Telefono" class="field"></td></tr>
+            <tr><td>Su contraseña sera su numero de telefono</td></tr>
+
+        </table>
+
+        <form class="parrafos">
+            <p><b>Al Crear una Cuenta, estás accediendo a los Condiciones de servicio y código de honor y reconoces que FIISesorías y todos sus miembros, pueden procesar tu datos personales de acuerdo a la Politica de Privacidad </b></p>
+            <p><input type="checkbox" id="checkbox" ><b>Ayuda a la investigación académica brindando más información</b></p>
+
+
+        </form>
+
+            <input type="button" v-on:click="registrar" value="Crear cuenta"/>
+
+
+
+
+    </div>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/script_regp.js"></script>
+</body>
+</html>

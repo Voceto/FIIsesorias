@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cursos</title>
+    <link rel="stylesheet" href="css/cursos.css">
+</head>
+<body>
+<div id="cursos">
+    <!-- <datalist>
+        <template v-for="u in universidades">
+            <option>
+                {{u.nombre}}
+            </option>
+        </template>
+    </datalist> -->
+    <datalist id="universidad">
+        <option value="Universidad Nacional de Ingenieria">
+        <option value="Universidad Nacional Federico Villareal">
+    </datalist>
+    <datalist id="areas_academicas">
+        <template v-for="a in areasAca">
+            <option>
+                {{a.nombre}}
+            </option>
+        </template>
+    </datalist>
+    <datalist id="cursol">
+        <template v-for="c in cursos">
+            <option>{{c.nombre}}</option>
+        </template>
+    </datalist>
+    <h1>FIISesorias</h1>
+    <h2>Cursos</h2>
+    <h3>Encuentra el curso que buscas ! </h3>
+    <a href="index.html"><input type="button" value="Regresar al inicio"/></a>
+    <table>
+        <tr>
+            <td>Selecciona universidad</td>
+            <td><input type="text" v-model="horarioRequest.universidad" list="universidad"></td>
+            <td><input type="button" v-on:click="elegirUniv" value="Elegir"></td>
+        </tr>
+            <template v-if="areaf==true">
+                <tr>
+                    <td>Selecciona area académica</td>
+                    <td><input type="text" v-model="horarioRequest.areaAca" list="areas_academicas"></td>
+                    <td><input type="button" v-on:click="elegirAreaAcademica" value="Elegir"></td>
+                </tr>
+            </template>
+
+        <template v-if="cursof==true">
+            <tr>
+                <td>Seleccione curso</td>
+                <td><input type="text" v-model="horarioRequest.curso" list="cursol"></td>
+                <td><input type="button" v-on:click="buscarHorarios" value="Elegir"></td>
+            </tr>
+        </template>
+    </table>
+    <template v-if="verHorarios==true">
+        <h3>Horarios Disponibles: </h3>
+        <table border="1px">
+            <tr>
+                <th>CURSO</th>
+                <th>CODIGO DEL HORARIO</th>
+                <th>FECHA</th>
+                <th>HORA DE INICIO</th>
+                <th>HORA DE FIN</th>
+                <th>COSTO</th>
+                <th>ASESOR</th>
+            </tr>
+            <template v-for="h in horarios">
+
+                <tr>
+                    <td>{{h.nombre_curso}}</td>
+                    <td>{{h.id}}</td>
+                    <td>{{h.fecha}}</td>
+                    <td>{{h.hora_inicio.substr(11,5)}}</td>
+                    <td>{{h.hora_fin.substr(11,5)}}</td>
+                    <td>{{h.costo}}</td>
+                    <td>{{h.nombre_asesor}}</td>
+
+                </tr>
+            </template>
+        </table>
+        <h3>¿Deseas alguna asesoría?</h3>
+        <table>
+            <tr>
+                <td>Ingresa el codigo del horario en el que estás interesado</td>
+                <td><input type="text" v-model="horario_id" placeholder="Codigo del Horario"></td>
+                <td><input type="button" v-on:click="guardarCurso" value="Inscribirse"></td>
+            </tr>
+        </table>
+    </template>
+    <template v-if="inscripcion==true">
+        <h3>Elige tu forma de pago..</h3>
+        <table>
+            <td><a href="pagoefectivo.html"><input type="button" value="Pago en Efectivo"/></a></td>
+            <td><a href="pagotarjeta.html"><input type="button" value="Pago con Tarjeta"/></a></td>
+            <td><a href="pagopaypal.html"><input type="button" value="Pago con Paypal"/></a></td>
+        </table>
+    </template>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/script_cursos.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+</body>
+</html>

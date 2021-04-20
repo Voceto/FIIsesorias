@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FIISesorias - Pago con Tarjeta</title>
+</head>
+<body>
+<div id="tarjet">
+<form action="/pagartarjeta" method="post">
+<table>
+    <header>
+    <h1>FIISesorías</h1>
+
+    </header>
+    <input type="radio" id="master" value=1 v-model="TarjetaRequest.id_tipo_tar">
+    <label for="master">Master Card</label><br>
+    <input type="radio" id="visa" value=2 v-model="TarjetaRequest.id_tipo_tar">
+    <label for="visa">VISA</label><br>
+    <input type="radio" id="american" value=3 v-model="TarjetaRequest.id_tipo_tar">
+    <label for="american">American Express</label><br>
+    <tr><td><input type="text" v-model="TarjetaRequest.propietario" placeholder="Nombre del Titular"></td></tr>
+    <tr><td><input type="number" v-model="TarjetaRequest.nro_tar" placeholder="Numero de Tarjeta"></td></tr>
+    <tr><td><input type="number" v-model="TarjetaRequest.caducidad" placeholder="Año de Caducidad"></td></tr>
+    <tr><td><input type="text" v-model="TarjetaRequest.cvc" placeholder="CVC"></td></tr>
+</table>
+    <input type="button" v-on:click="post1" value="Confirmar Datos">
+    <template v-if="confirm==true">
+        <table>
+        <tr><td><input type="number" v-model="PagoTarRequest.monto" placeholder="Monto:"></td></tr>
+            <tr><td><ol> <input type="button" v-on:click="post2" value="Completar Pago"> </ol></td></tr>
+        </table>
+        <template v-if="pago==true">
+            <ol><a href="http://localhost:8080/confirmacionpagos.html"><input type="button" v-on:click="post3" value="continuar"></a> </ol>
+        </template>
+    </template>
+    <ol><a href="http://localhost:8080/inscripcion.html"> <input type="button" name="pagocancelado" value="Cancelar Pago"></a></ol>
+</form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/script_tarjeta.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FIISesorias</title>
+    <link rel="stylesheet" href="css/ingresar.css"
+</head>
+<body>
+<div id="ingresar">
+    <template v-if="sesion=='no iniciada'">
+        <section class="login">
+        <h1>FIISesorías</h1>
+        <table>
+            <tr>
+                <td>Usuario:</td>
+                <td><input v-model="usuarioRequest.username" type = "text" placeholder="Nombre de usuario"/></td>
+            </tr>
+            <tr>
+                <td>Contraseña:</td>
+                <td><input v-model="usuarioRequest.contrasenia" type = "password" placeholder="Contraseña"/></td>
+            </tr>
+            <tr>
+                <td><button v-on:click="ingresar">Ingresar</button></td>
+            </tr>
+        </table>
+        </section>
+    </template>
+    <template v-if="sesion=='no iniciada' && contador>0">
+        <h3 style="color:#ff0000">Ingrese de nuevo, contraseña incorrecta</h3>
+    </template>
+    <template v-if="sesion=='iniciada'">
+        <a href="index.html"><button v-on:click="guardarId">Empieza a navegar</button></a>
+    </template>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/script_ingresar.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</body>
+
+
+</html>

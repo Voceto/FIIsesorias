@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pago con Efectivo</title>
+</head>
+<body>
+    <header>
+    <h1>FIISesorías</h1>
+    </header>
+    <div id="efectivo">
+    <table>
+        <tr><td><input type="text" v-model="efectivo.nombre" name="nombre" placeholder="Nombre Completo"></td></tr>
+        <tr><td><input type="text" v-model="efectivo.dni" name="dni" placeholder="Nro DNI"></td></tr>
+        <tr><td><input type="text" v-model="efectivo.monto" name="monto" placeholder="Monto"></td></tr>
+        <tr><td><a href="http://localhost:8080/confirmacionpagos.html"><input type="button" v-on:click="pagocompleto" name="pagocompleto" value="Completar Pago"></a></td></tr>
+        <tr><td><a href="http://localhost:8080/index.html"><input type="button" v-on:click="pagoabortado" name="pagocancelado" value="Abortar Pago"></a></td></tr>
+    </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/script_efectivo.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
+</html>

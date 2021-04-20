@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Pago por PayPal</title>
+</head>
+<body>
+    <!----------------------------------------------------------------------------------------------->
+    <!----------------------------------------------------------------------------------------------->
+    <!----------------------------------------------------------------------------------------------->
+
+    <div id="paypal">
+
+        <template v-if="sesion==false">
+            <header>
+                <h1>PayPal</h1>
+            </header>
+
+            <table>
+                <tr><td><input v-model="usuarioRequest.username" type="text" placeholder="Correo Electronico"></td></tr>
+                <tr><td><input v-model="usuarioRequest.password" type="password" name="contrasena" placeholder="Contraseña"></td></tr>
+                <tr><td><input v-on:click="ingresar" href="/pagopaypal2.html" type="button" name="iniciarsesion" value="Iniciar Sesion"></td></tr>
+            </table>
+        </template>
+
+        <template v-if="sesion==false && contador>0">
+            <h3 style="color:#FF0000">Ingrese de nuevo, corrreo o contraseña incorrecta</h3>
+        </template>
+
+        <template v-if="sesion==true" >
+            <button v-on:click="comprar" href="/pagopaypal2.html">Empieza a navegar</button>
+        </template>
+    </div>
+
+    <!----------------------------------------------------------------------------------------------->
+    <!----------------------------------------------------------------------------------------------->
+    <!----------------------------------------------------------------------------------------------->
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/script_paypal.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!----------------------------------------------------------------------------------------------->
+    <!----------------------------------------------------------------------------------------------->
+    <!----------------------------------------------------------------------------------------------->
+</body>
+</html>
